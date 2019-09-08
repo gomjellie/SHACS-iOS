@@ -49,7 +49,7 @@ export default class Settings extends NavigationPage {
 
       // Check if it is a device you are looking for based on advertisement data
       // or other criteria.
-      if (device.name === 'SW1') {
+      if (device.name === 'SW1' || device.localName === 'SW1') {
         console.log(device);
         // Stop scanning as it's not necessary if you are scanning for one device.
 
