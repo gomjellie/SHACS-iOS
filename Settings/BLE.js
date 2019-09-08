@@ -60,7 +60,7 @@ export default class Settings extends NavigationPage {
           })
           .then((connectedDevice) => {
             console.log(connectedDevice);
-            device.writeCharacteristicWithoutResponseForService(device.serviceUUIDs[0], this.getCharUUID(3), 'MA==') //AQ==
+            connectedDevice.writeCharacteristicWithResponseForService(this.getCharUUID(0), this.getCharUUID(3), 'MA==') //AQ==
               .then(console.log)
               .catch(console.log);
             // Do work on device with services and characteristics
