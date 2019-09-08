@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.4",
+    "react-native-ble-plx": "^1.0.3",
     "teaset": "^0.7.0"
   },
   "devDependencies": {

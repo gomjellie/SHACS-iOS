@@ -20,6 +20,7 @@
 		8EA21CE7AC50DA406C42D510 /* libPods-SHACS-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC3C49F78ECCCA39D168A3D /* libPods-SHACS-tvOS.a */; };
 		954120B9E8B78C043AC472E9 /* libPods-SHACSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F81C7E731650EB7F7327FF /* libPods-SHACSTests.a */; };
 		B6B3BAC42D9C37661697422D /* libPods-SHACS-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA38C518BCD98FF1918E7E6 /* libPods-SHACS-tvOSTests.a */; };
+		F12BC71323250E4E00064A90 /* Ble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12BC71223250E4E00064A90 /* Ble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		E8F81C7E731650EB7F7327FF /* libPods-SHACSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHACSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F12BC71123250E4E00064A90 /* SHACS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SHACS-Bridging-Header.h"; sourceTree = "<group>"; };
+		F12BC71223250E4E00064A90 /* Ble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ble.swift; sourceTree = "<group>"; };
 		F4BAEFAF47F16750822E7F1E /* Pods-SHACSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHACSTests.release.xcconfig"; path = "Target Support Files/Pods-SHACSTests/Pods-SHACSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,12 +162,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F12BC71223250E4E00064A90 /* Ble.swift */,
 				13B07FAE1A68108700A75B9A /* SHACS */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SHACSTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B0EB0C0ECDD887552DE23F0A /* Pods */,
+				F12BC71123250E4E00064A90 /* SHACS-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -194,7 +199,6 @@
 				653FD313FF91AABC32B085D7 /* Pods-SHACSTests.debug.xcconfig */,
 				F4BAEFAF47F16750822E7F1E /* Pods-SHACSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -292,6 +296,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1030;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -308,6 +315,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -528,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12BC71323250E4E00064A90 /* Ble.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -582,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 653FD313FF91AABC32B085D7 /* Pods-SHACSTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -605,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4BAEFAF47F16750822E7F1E /* Pods-SHACSTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = SHACSTests/Info.plist;
@@ -626,6 +637,7 @@
 			baseConfigurationReference = D3D58EB6DB5EE165F95F1894 /* Pods-SHACS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = SHACS/Info.plist;
@@ -637,6 +649,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SHACS;
+				SWIFT_OBJC_BRIDGING_HEADER = "SHACS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -646,6 +661,7 @@
 			baseConfigurationReference = D2BA1295F822AF1F13742BCA /* Pods-SHACS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = SHACS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -656,6 +672,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SHACS;
+				SWIFT_OBJC_BRIDGING_HEADER = "SHACS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
