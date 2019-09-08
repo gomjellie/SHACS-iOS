@@ -6,9 +6,9 @@ import {
   ListRow,
   Label,
   Theme,
-  ModalIndicator,
 } from 'teaset';
 import About from './About';
+import BLE from './BLE';
 import License from './License';
 
 export default class Settings extends NavigationPage {
@@ -29,8 +29,8 @@ export default class Settings extends NavigationPage {
         <View style={styles.spaces}>
           <Text style={{color: Theme.primaryColor}}>About</Text>
         </View>
-        <MyListRow title="Open Source License" bottomSeparator="full" onPress={() => {
-          this.navigator.push({view: <License/>});
+        <MyListRow title="BLE" bottomSeparator="full" onPress={() => {
+          this.navigator.push({view: <BLE/>});
         }}/>
         <MyListRow title="About" bottomSeparator="full" onPress={() => {
           this.navigator.push({view: <About/>});
