@@ -1,6 +1,7 @@
 import { BleManager } from 'react-native-ble-plx';
 import React, {Component} from 'react';
-import {View, ScrollView, Text, StyleSheet, Alert} from 'react-native';
+import { Buffer } from 'buffer';
+import {View, ScrollView, Text, StyleSheet} from 'react-native';
 
 import {
   NavigationPage,
@@ -60,9 +61,7 @@ export default class Settings extends NavigationPage {
           })
           .then((connectedDevice) => {
             console.log(connectedDevice);
-            connectedDevice.writeCharacteristicWithResponseForService(this.getCharUUID(0), this.getCharUUID(3), 'MA==') //AQ==
-              .then(console.log)
-              .catch(console.log);
+            this.connectedDevice = connectedDevice;
             // Do work on device with services and characteristics
           })
           .catch((error) => {
@@ -80,11 +79,19 @@ export default class Settings extends NavigationPage {
         <View style={styles.spaces}>
           <Text style={{color: Theme.primaryColor}}>BLE</Text>
         </View>
-        <MyListRow title="Open Source License" bottomSeparator="full" onPress={() => {
-          this.navigator.push({view: <License/>});
+        <MyListRow title="Turn On" bottomSeparator="full" onPress={() => {
+          const buff = Buffer.alloc(1);
+          buff[0] = 1;
+          this.connectedDevice.writeCharacteristicWithResponseForService(this.getCharUUID(0), this.getCharUUID(3), buff.toString('base64')) //AQ==
+            .then(console.log)
+            .catch(console.log);
         }}/>
-        <MyListRow title="About" bottomSeparator="full" onPress={() => {
-          this.navigator.push({view: <About/>});
+        <MyListRow title="Turn Off" bottomSeparator="full" onPress={() => {
+          const buff = Buffer.alloc(1);
+          buff[0] = 0;
+          this.connectedDevice.writeCharacteristicWithResponseForService(this.getCharUUID(0), this.getCharUUID(3), buff.toString('base64')) //AQ==
+            .then(console.log)
+            .catch(console.log);
         }}/>
       </ScrollView>
     );
